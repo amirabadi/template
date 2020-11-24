@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.qorb.domain.BaseInformation;
+import com.company.domain.BaseInformation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

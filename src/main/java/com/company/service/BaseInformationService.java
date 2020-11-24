@@ -1,9 +1,9 @@
 package com.company.service;
 
-import com.qorb.dto.BaseInfoDTO;
-import com.qorb.dto.DropdownDTO;
-import com.qorb.dto.FilterMeta;
-import com.qorb.dto.SortMeta;
+import com.company.dto.BaseInfoDTO;
+import com.company.dto.DropdownDTO;
+import com.company.dto.FilterMeta;
+import com.company.dto.SortMeta;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

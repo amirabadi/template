@@ -1,9 +1,9 @@
 package com.company.service.impl;
 
-import com.qorb.domain.User;
-import com.qorb.repository.UserRepo;
-import com.qorb.service.PageEntity;
-import com.qorb.service.UserService;
+import com.company.domain.User;
+import com.company.repository.UserRepo;
+import com.company.service.PageEntity;
+import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

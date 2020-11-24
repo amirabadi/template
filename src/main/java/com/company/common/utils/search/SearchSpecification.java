@@ -1,7 +1,7 @@
 package com.company.common.utils.search;
 
-import com.qorb.common.utils.enums.OperatorEnum;
-import com.qorb.dto.FilterMeta;
+import com.company.common.utils.enums.OperatorEnum;
+import com.company.dto.FilterMeta;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.jpa.domain.Specification;
@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import static com.qorb.common.utils.enums.OperatorEnum.EQUAL;
+import static com.company.common.utils.enums.OperatorEnum.EQUAL;
 
 @Data
 @AllArgsConstructor

@@ -1,9 +1,9 @@
 package com.company.common.config;
 
-import com.qorb.common.security.SecurityConstants;
-import com.qorb.service.impl.CustomUserDetailsService;
-import com.qorb.common.security.JwtAuthenticationFilter;
-import com.qorb.common.security.JwtAuthorizationFilter;
+import com.company.common.security.SecurityConstants;
+import com.company.service.impl.CustomUserDetailsService;
+import com.company.common.security.JwtAuthenticationFilter;
+import com.company.common.security.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,7 +27,7 @@ import java.util.Arrays;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
-@ComponentScan("com.qorb")
+@ComponentScan("com.company")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

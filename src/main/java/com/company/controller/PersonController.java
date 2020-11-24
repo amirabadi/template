@@ -1,10 +1,10 @@
 package com.company.controller;/*
-package com.qorb.controller;
+package com.company.controller;
 
-import com.qorb.common.mapper.PersonMapper;
-import com.qorb.dto.DataTableDTO;
-import com.qorb.dto.PersonDTO;
-import com.qorb.service.PersonService;
+import com.company.common.mapper.PersonMapper;
+import com.company.dto.DataTableDTO;
+import com.company.dto.PersonDTO;
+import com.company.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;

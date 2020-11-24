@@ -3,7 +3,7 @@ package com.company.common.security;
 //import com.jakublesko.jwtsecurity.constants.SecurityConstants;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qorb.dto.LoginRequestDTO;
+import com.company.dto.LoginRequestDTO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -84,7 +84,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain filterChain, Authentication authentication) throws IOException {
-        com.qorb.domain.User user =(com.qorb.domain.User) authentication.getPrincipal();
+        com.company.domain.User user =(com.company.domain.User) authentication.getPrincipal();
         ObjectMapper mapper =new ObjectMapper();
         String token = Jwts.builder()
                 .signWith(Keys.hmacShaKeyFor(SecurityConstants.JWT_SECRET.getBytes()), SignatureAlgorithm.HS512)

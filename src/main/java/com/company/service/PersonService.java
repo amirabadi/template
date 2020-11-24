@@ -1,7 +1,7 @@
 package com.company.service;/*
-package com.qorb.service;
+package com.company.service;
 
-import com.qorb.dto.PersonDTO;
+import com.company.dto.PersonDTO;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

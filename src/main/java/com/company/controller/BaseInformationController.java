@@ -1,10 +1,10 @@
 package com.company.controller;
 
-import com.qorb.domain.BaseInformation;
-import com.qorb.dto.BaseInfoDTO;
-import com.qorb.dto.DataTableDTO;
-import com.qorb.dto.DropdownDTO;
-import com.qorb.service.BaseInformationService;
+import com.company.domain.BaseInformation;
+import com.company.dto.BaseInfoDTO;
+import com.company.dto.DataTableDTO;
+import com.company.dto.DropdownDTO;
+import com.company.service.BaseInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;

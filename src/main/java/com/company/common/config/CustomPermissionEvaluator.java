@@ -1,7 +1,7 @@
 package com.company.common.config;
 
-import com.qorb.domain.Role;
-import com.qorb.service.RoleService;
+import com.company.domain.Role;
+import com.company.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;

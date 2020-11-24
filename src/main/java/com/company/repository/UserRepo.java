@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.qorb.domain.User;
+import com.company.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

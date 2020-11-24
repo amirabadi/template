@@ -1,8 +1,8 @@
 package com.company.service.impl;
 
-import com.qorb.domain.Role;
-import com.qorb.repository.RoleRepo;
-import com.qorb.service.RoleService;
+import com.company.domain.Role;
+import com.company.repository.RoleRepo;
+import com.company.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

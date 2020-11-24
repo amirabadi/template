@@ -1,11 +1,11 @@
 package com.company.service.impl;/*
-package com.qorb.service.impl;
+package com.company.service.impl;
 
 
-import com.qorb.common.mapper.PersonMapper;
-import com.qorb.dto.PersonDTO;
-import com.qorb.repository.PersonRepo;
-import com.qorb.service.PersonService;
+import com.company.common.mapper.PersonMapper;
+import com.company.dto.PersonDTO;
+import com.company.repository.PersonRepo;
+import com.company.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;

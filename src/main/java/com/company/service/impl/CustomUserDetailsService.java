@@ -1,7 +1,7 @@
 package com.company.service.impl;
 
-import com.qorb.domain.User;
-import com.qorb.repository.UserRepo;
+import com.company.domain.User;
+import com.company.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

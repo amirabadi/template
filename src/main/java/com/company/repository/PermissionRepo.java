@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.qorb.domain.Permission;
+import com.company.domain.Permission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

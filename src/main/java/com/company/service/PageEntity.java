@@ -1,9 +1,9 @@
 package com.company.service;
 
-import com.qorb.common.utils.enums.OperatorEnum;
-import com.qorb.common.utils.search.SearchSpecification;
-import com.qorb.dto.FilterMeta;
-import com.qorb.dto.SortMeta;
+import com.company.common.utils.enums.OperatorEnum;
+import com.company.common.utils.search.SearchSpecification;
+import com.company.dto.FilterMeta;
+import com.company.dto.SortMeta;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
