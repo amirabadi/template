@@ -24,4 +24,13 @@ public class Organization extends ManipulateInformation {
     private String uniquePath;
     @Column(name = "uniqueName")
     private String uniqueName;
+    @ManyToOne(
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            name = "parent",
+            referencedColumnName = "id",
+            nullable = true
+    )
+    private Organization parent;
 }
