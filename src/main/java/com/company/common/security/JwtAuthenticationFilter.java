@@ -93,7 +93,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setAudience(SecurityConstants.TOKEN_AUDIENCE)
                 .setSubject(SecurityConstants.TOKEN_SUBJECT)
                 .setExpiration(new Date(System.currentTimeMillis() + 864000000))
-                .claim("perm", user.getAuthorities()).claim("userName",user.getUsername())
+                .claim("roleName", user.getAuthorities()).claim("userName",user.getUsername())
                 .compact();
         String refreshToken=createRefreshToken(user.getUsername());
         Map<String, String> tokenMap = new HashMap<>();

@@ -1,9 +1,8 @@
 package com.company.common.config;
 
-import com.company.common.security.SecurityConstants;
-import com.company.service.impl.CustomUserDetailsService;
 import com.company.common.security.JwtAuthenticationFilter;
 import com.company.common.security.JwtAuthorizationFilter;
+import com.company.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -41,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         new CookieCsrfTokenRepository();
         http.cors()
                 .and()
-                .addFilterAfter(new CustomCsrfFilter(), CsrfFilter.class)
+              //  .addFilterAfter(new CustomCsrfFilter(), CsrfFilter.class)
                 .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 //.csrfTokenRepository(csrfTokenRepository())
@@ -82,14 +81,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.addAllowedOrigin(/*Arrays.asList("*")*/"http://localhost:3000");
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
-        /*
-        * response.setHeader("Access-Control-Allow-Origin", "*");
-response.setHeader("Access-Control-Allow-Credentials", "true");
-response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-* */
         configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Origin","Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization","X-XSRF-TOKEN"
                 ));
         configuration.setAllowCredentials(true);
@@ -97,12 +90,6 @@ response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
-   /* private CsrfTokenRepository csrfTokenRepository() {
-        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-        repository.setHeaderName("X-CSRF-TOKEN");
-        return repository;
-    }*/
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
@@ -113,14 +100,4 @@ response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers
         authenticationManagerBuilder
                 .userDetailsService(customUserDetails);
     }
-   /* @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
-    public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
-        @Override
-        protected MethodSecurityExpressionHandler createExpressionHandler() {
-            DefaultMethodSecurityExpressionHandler expressionHandler =
-                    new DefaultMethodSecurityExpressionHandler();
-            expressionHandler.setPermissionEvaluator(new CustomPermissionEvaluator());
-            return expressionHandler;
-        }
-    }*/
 }

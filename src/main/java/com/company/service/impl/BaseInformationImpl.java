@@ -9,10 +9,13 @@ import com.company.dto.BaseInfoDTO;
 import com.company.dto.DropdownDTO;
 import com.company.dto.FilterMeta;
 import com.company.dto.SortMeta;
+import com.company.map.BaseInformationMapper;
 import com.company.repository.BaseInformationRepo;
 import com.company.repository.UserRepo;
 import com.company.service.BaseInformationService;
 import com.company.service.PageEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +35,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
     private BaseInformationRepo baseInformationRepo;
     @Autowired
     private UserRepo userRepo;
+//    private final BaseInformationMapper baseInformationMapper = Mappers.getMapper(BaseInformationMapper.class);
 
     @Override
     public Page<BaseInfoDTO> getBaseInformationPageable(Integer page, Integer pagesize, List<SortMeta> sortMetas, List<FilterMeta> filterMetas) {
@@ -51,11 +55,12 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
             baseInformationPage = baseInformationRepo.findAll(pageRequest);
         }
         Page<BaseInfoDTO> dtoPage = baseInformationPage.map(baseInformation -> {
-            BaseInfoDTO baseInfoDTO = new BaseInfoDTO();
-            baseInfoDTO.setId(baseInformation.getId());
+            //BaseInfoDTO baseInfoDTO = new BaseInfoDTO();
+            BaseInfoDTO baseInfoDTO = BaseInformationMapper.INSTANCE.baseInformationToBaseInfoDto(baseInformation);
+           /* baseInfoDTO.setId(baseInformation.getId());
             baseInfoDTO.setTitle(baseInformation.getTitle());
             baseInfoDTO.setParentTitle(baseInformation.getParent() != null ? baseInformation.getParent().getTitle() : null);
-            baseInfoDTO.setParentId(baseInformation.getParent() != null ? baseInformation.getParent().getId() : null);
+            baseInfoDTO.setParentId(baseInformation.getParent() != null ? baseInformation.getParent().getId() : null);*/
             return baseInfoDTO;
         });
         return dtoPage;
@@ -65,7 +70,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
     public Page<BaseInfoDTO> getBaseInformationPageable(Integer page, Integer pagesize, Long idParent, List<SortMeta> sortMetas, List<FilterMeta> filterMetas) {
         FilterMeta filterMeta = new FilterMeta();
         filterMeta.setFiledName("parent");
-        BaseInformation parentBase=baseInformationRepo.findById(idParent).get();
+        BaseInformation parentBase = baseInformationRepo.findById(idParent).get();
         filterMeta.setFiledValue(parentBase);
         filterMeta.setOperator("eq");
         filterMetas.add(filterMeta);
@@ -80,11 +85,12 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
             baseInformationPage = baseInformationRepo.findAll(pageRequest);
         }
         Page<BaseInfoDTO> dtoPage = baseInformationPage.map(baseInformation -> {
-            BaseInfoDTO baseInfoDTO = new BaseInfoDTO();
+            BaseInfoDTO baseInfoDTO = BaseInformationMapper.INSTANCE.baseInformationToBaseInfoDto(baseInformation);
+            /*BaseInfoDTO baseInfoDTO = new BaseInfoDTO();
             baseInfoDTO.setId(baseInformation.getId());
             baseInfoDTO.setTitle(baseInformation.getTitle());
             baseInfoDTO.setParentTitle(baseInformation.getParent() != null ? baseInformation.getParent().getTitle() : null);
-            baseInfoDTO.setParentId(baseInformation.getParent() != null ? baseInformation.getParent().getId() : null);
+            baseInfoDTO.setParentId(baseInformation.getParent() != null ? baseInformation.getParent().getId() : null);*/
             return baseInfoDTO;
         });
         return dtoPage;
@@ -101,8 +107,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
         if (baseInfoDTO.getParentId() != null) {
             baseInformation.setParent(baseInformationRepo.findById(Long.valueOf(baseInfoDTO.getParentId())).orElse(null));
             baseInformation.setFullName(baseInformation.getParent().getFullName() + ">" + baseInformation.getTitle());
-        }
-        else{
+        } else {
             baseInformation.setFullName(baseInformation.getTitle());
         }
         baseInformationRepo.saveAndFlush(baseInformation);
@@ -119,8 +124,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
         baseInformation.setTitle(baseInfoDTO.getTitle());
         if (baseInformation.getParent() != null) {
             baseInformation.setFullName(baseInformation.getParent().getFullName() + ">" + baseInformation.getTitle());
-        }
-        else{
+        } else {
             baseInformation.setFullName(baseInformation.getTitle());
         }
         baseInformationRepo.saveAndFlush(baseInformation);
@@ -140,7 +144,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
 
     @Override
     public List<DropdownDTO> dropdownBaseInformation(Long idParent) {
-        List<BaseInformation> baseInformations = baseInformationRepo.getByParentIdAndAndEventNotIgnoreCase(idParent, TransactionEvent.DELETE.toString());
+        List<BaseInformation> baseInformations = baseInformationRepo.getByParentIdAndEventNotIgnoreCase(idParent, TransactionEvent.DELETE.toString());
         return baseInformations.stream().map(x -> new DropdownDTO(x.getTitle(), String.valueOf(x.getId()))).collect(Collectors.toList());
     }
 

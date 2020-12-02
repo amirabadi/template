@@ -15,7 +15,7 @@ public interface BaseInformationRepo extends JpaRepository<BaseInformation, Long
 
     BaseInformation getById(Long id);
 
-    List<BaseInformation> getByParentIdAndAndEventNotIgnoreCase(Long id, String event);
+    List<BaseInformation> getByParentIdAndEventNotIgnoreCase(Long id, String event);
     // @Query("select b from BaseInformation b ")
 //    Page<BaseInformation> findAll(Pageable pageable);
 }

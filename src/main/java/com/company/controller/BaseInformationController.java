@@ -53,6 +53,7 @@ public class BaseInformationController {
     @PostMapping(value = "/editBaseInformation", consumes = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasPermission(this,'edit')")
     public boolean edit(@RequestBody BaseInfoDTO baseInfoDTO) {
+
         return baseInformationService.editBaseInformation(baseInfoDTO);
     }
 

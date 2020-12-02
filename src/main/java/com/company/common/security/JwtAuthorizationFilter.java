@@ -59,7 +59,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     .get("userName").toString();
 
                 List<SimpleGrantedAuthority> authorities = new ArrayList();
-                List<Map>lm=(List<Map>)parsedToken.getBody().get("perm");
+                List<Map>lm=(List<Map>)parsedToken.getBody().get("roleName");
                 for(Map<String, String> m:lm){
                     for(Map.Entry<String,String> me:m.entrySet())
                     authorities.add(new SimpleGrantedAuthority((me.getValue())));

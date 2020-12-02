@@ -42,7 +42,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         }*/
         boolean hasPermission=false;
         for (final GrantedAuthority grantedAuth : auth.getAuthorities()) {
-            Role  role=roleService.findByRoleName(grantedAuth.toString());
+            Role role=roleService.findByRoleName(grantedAuth.toString());
 
             if (role.getPermissions().stream().anyMatch(x-> x.getNamePermission().equalsIgnoreCase(permission)&&
                 x.getObjectPermission().equalsIgnoreCase(targetType))) {
