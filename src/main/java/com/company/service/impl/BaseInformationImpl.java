@@ -35,6 +35,8 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
     private BaseInformationRepo baseInformationRepo;
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private BaseInformationMapper baseInformationMapper;
 //    private final BaseInformationMapper baseInformationMapper = Mappers.getMapper(BaseInformationMapper.class);
 
     @Override
@@ -56,7 +58,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
         }
         Page<BaseInfoDTO> dtoPage = baseInformationPage.map(baseInformation -> {
             //BaseInfoDTO baseInfoDTO = new BaseInfoDTO();
-            BaseInfoDTO baseInfoDTO = BaseInformationMapper.INSTANCE.baseInformationToBaseInfoDto(baseInformation);
+            BaseInfoDTO baseInfoDTO = baseInformationMapper.baseInformationToBaseInfoDto(baseInformation);
            /* baseInfoDTO.setId(baseInformation.getId());
             baseInfoDTO.setTitle(baseInformation.getTitle());
             baseInfoDTO.setParentTitle(baseInformation.getParent() != null ? baseInformation.getParent().getTitle() : null);
@@ -85,7 +87,7 @@ public class BaseInformationImpl extends PageEntity implements BaseInformationSe
             baseInformationPage = baseInformationRepo.findAll(pageRequest);
         }
         Page<BaseInfoDTO> dtoPage = baseInformationPage.map(baseInformation -> {
-            BaseInfoDTO baseInfoDTO = BaseInformationMapper.INSTANCE.baseInformationToBaseInfoDto(baseInformation);
+            BaseInfoDTO baseInfoDTO = baseInformationMapper.baseInformationToBaseInfoDto(baseInformation);
             /*BaseInfoDTO baseInfoDTO = new BaseInfoDTO();
             baseInfoDTO.setId(baseInformation.getId());
             baseInfoDTO.setTitle(baseInformation.getTitle());

@@ -8,9 +8,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE,componentModel = "spring")
 public interface BaseInformationMapper {
-    BaseInformationMapper INSTANCE = Mappers.getMapper(BaseInformationMapper.class);
+    //BaseInformationMapper INSTANCE = Mappers.getMapper(BaseInformationMapper.class);
 
     @Mapping(source = "baseInformation.parent.title", target = "parentTitle")
     @Mapping(source = "baseInformation.parent.id", target = "parentId")
